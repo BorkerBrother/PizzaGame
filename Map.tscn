@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://chf04nkpadyi8"]
+
+[ext_resource type="PackedScene" uid="uid://bnssaq5ut77m" path="res://PizzaGuy.tscn" id="1_3vkgl"]
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_fskf6"]
+[ext_resource type="Texture2D" uid="uid://x3pc2hscddom" path="res://background test.png" id="1_p4u3v"]
+[ext_resource type="Script" path="res://BackgroundTest.gd" id="2_kfpve"]
+[ext_resource type="Texture2D" uid="uid://dr2qey7863ntj" path="res://volti.png" id="4_gd3ol"]
+[ext_resource type="Texture2D" uid="uid://b6ol877o753x1" path="res://background_leben.png" id="4_q7bc6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4388a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bdmgc"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(22, -43)
+skew = 0.00227734
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Pizza Guy" parent="Area2D" instance=ExtResource("1_3vkgl")]
+position = Vector2(153.941, 630)
+scale = Vector2(0.3, 0.3)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Area2D"]
+script = ExtResource("1_fskf6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/CharacterBody2D"]
+position = Vector2(300, 800)
+scale = Vector2(10, 10)
+skew = 0.015708
+shape = SubResource("CircleShape2D_4388a")
+one_way_collision_margin = 56.9
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Area2D"]
+script = ExtResource("2_kfpve")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Area2D/ParallaxBackground"]
+motion_mirroring = Vector2(1400, 2.08165e-12)
+
+[node name="BackgroundTest" type="Sprite2D" parent="Area2D/ParallaxBackground/ParallaxLayer"]
+position = Vector2(698.526, 451.501)
+scale = Vector2(0.978482, 0.981603)
+skew = 0.00227726
+texture = ExtResource("1_p4u3v")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="Area2D/ParallaxBackground"]
+visible = false
+motion_mirroring = Vector2(3200, 2.08165e-12)
+
+[node name="BackgroundTest" type="Sprite2D" parent="Area2D/ParallaxBackground/ParallaxLayer3"]
+position = Vector2(1626, -196)
+rotation = -1.5708
+scale = Vector2(0.978482, 0.981603)
+skew = 0.00227726
+texture = ExtResource("4_q7bc6")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Area2D/ParallaxBackground"]
+motion_mirroring = Vector2(1400, 2.08165e-12)
+
+[node name="BackgroundTest" type="Sprite2D" parent="Area2D/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(1129, 820)
+rotation = -1.5865
+scale = Vector2(0.3, 0.3)
+skew = 0.00227726
+texture = ExtResource("4_gd3ol")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(397.122, 932.002, 479.972, 866.002, 650.801, 791.002, 792.492, 655.002, 866.289, 566.001, 833.141, 501.001, 874.979, 430.001, 854.865, 380.001, 949.815, 358.001, 1063.74, 324.001, 1131.86, 377.001, 1126.14, 501.001, 1089.35, 592.002, 1030.43, 627.002, 1103.61, 708.002, 1124.15, 945.003)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.08165e-12, 1000)
+scale = Vector2(1000, 5)
+shape = SubResource("RectangleShape2D_bdmgc")
